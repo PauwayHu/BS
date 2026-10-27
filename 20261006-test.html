@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方塊練習</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myallcss.css">
+    <style>
+        .box01{
+            height: 120px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- row-網格系統的列col-12：網格系統的「欄」，代表佔滿 12 格d-md-none：在 中度螢幕（md，大於等於 768px） 時將區塊隱藏d-xl-block：在 特大螢幕（xl，大於等於 1200px） 時將區塊顯示出來 -->
+            <div class="col-12 d-md-none d-xl-block">
+                <div class="box01 bg-primary"></div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- col-sm-6：在 小螢幕（sm，大於等於 576px，通常是大一點的手機或平板） 時，每個區塊佔據 6 格（總共 12 格），所以畫面會呈現 一排 2 個。
+            col-lg-4：在 大螢幕（lg，大於等於 992px，通常是桌上型電腦） 時，每個區塊佔據 4 格（12 除以 4），所以畫面會變成 一排 3 個。
+            bg-success：Bootstrap 內建的背景顏色，代表「成功」，預設是 綠色。 -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="box01 bg-success"></div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="box01 bg-success"></div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="box01 bg-success"></div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="box01 bg-success"></div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="box01 bg-success"></div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="box01 bg-success"></div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- col-md-3：在中/大螢幕（md 以上，大於等於 768px，如平板）時，每個區塊佔 3 格（12 除以 3）。所以排版會呈現一排 4 個。
+            col-xl-2：在特大螢幕（xl，大於等於 1200px，如桌機）時，每個區塊佔 2 格（12 除以 2）。所以排版會變成一排 6 個。
+            d-xl-none：在特大螢幕（xl，大於等於 1200px）時，將這個區塊隱藏（display: none）。這只加在最後兩個區塊上。
+            bg-danger：Bootstrap 的內建背景色，代表「危險」，預設是紅色。 -->
+            <div class="col-md-3 col-xl-2">
+                <div class="box01 bg-danger"></div>
+            </div>
+            <div class="col-md-3 col-xl-2">
+                <div class="box01 bg-danger"></div>
+            </div>
+            <div class="col-md-3 col-xl-2">
+                <div class="box01 bg-danger"></div>
+            </div>
+            <div class="col-md-3 col-xl-2">
+                <div class="box01 bg-danger"></div>
+            </div>
+            <div class="col-md-3 col-xl-2">
+                <div class="box01 bg-danger"></div>
+            </div>
+            <div class="col-md-3 col-xl-2">
+                <div class="box01 bg-danger"></div>
+            </div>
+            <div class="col-md-3 col-xl-2 d-xl-none">
+                <div class="box01 bg-danger"></div>
+            </div>
+            <div class="col-md-3 col-xl-2 d-xl-none">
+                <div class="box01 bg-danger"></div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- col-md-3：在 中/大螢幕（md 以上，大於等於 768px） 時，每個區塊佔 3 格（12 除以 3）。所以排版會是 一排 4 個。
+            col-xl-4：在 特大螢幕（xl，大於等於 1200px） 時，每個區塊佔 4 格。所以排版會變成 一排 3 個。
+            d-xl-none：在 特大螢幕（xl，大於等於 1200px） 時隱藏該區塊。注意，這裡 後面的 6 個區塊都被加上了這個隱藏設定，只有前 2 個沒有。
+            bg-warning：Bootstrap 的內建背景色，代表「警告」，預設是 黃色。 -->
+            <div class="col-md-3 col-xl-4">
+                <div class="box01 bg-warning"></div>
+            </div>
+            <div class="col-md-3 col-xl-4">
+                <div class="box01 bg-warning"></div>
+            </div>
+            <div class="col-md-3 col-xl-4 d-xl-none">
+                <div class="box01 bg-warning"></div>
+            </div>
+            <div class="col-md-3 col-xl-4 d-xl-none">
+                <div class="box01 bg-warning"></div>
+            </div>
+            <div class="col-md-3 col-xl-4 d-xl-none">
+                <div class="box01 bg-warning"></div>
+            </div>
+            <div class="col-md-3 col-xl-4 d-xl-none">
+                <div class="box01 bg-warning"></div>
+            </div>
+            <div class="col-md-3 col-xl-4 d-xl-none">
+                <div class="box01 bg-warning"></div>
+            </div>
+            <div class="col-md-3 col-xl-4 d-xl-none">
+                <div class="box01 bg-warning"></div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- col-12：基礎設定，佔據網格的 12 格（也就是寬度 100%）。
+            d-lg-none：在 大螢幕（lg，大於等於 992px，通常是一般筆電） 時，將這個區塊隱藏（display: none）。
+            d-xxl-block：在 超大螢幕（xxl，大於等於 1400px，通常是大型桌機顯示器） 時，覆蓋前面的隱藏設定，重新將區塊顯示出來（display: block）。
+            bg-info：Bootstrap 內建的背景顏色，代表「資訊」，預設是 淺藍色。 -->
+            <div class="col-12 d-lg-none d-xxl-block">
+                <div class="box01 bg-info"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.js"></script>
+</body>
+</html>

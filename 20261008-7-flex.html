@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ch7. Flex</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myallcss.css">
+    <style>
+        .box01{
+            height: 120px;
+            line-height: 120px;
+            /* box-shadow: --brand-primary-orange; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="mytitle-03 text-start">Ch7. Flex</div>
+
+        <div class="display-5 fw-900">1. flex-row</div>
+        <div class="row">
+            <div class="col-3">
+                <div class="box01 bg-success display-2 text-center fw-900">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success display-2 text-center fw-900">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success display-2 text-center fw-900">03</div>
+            </div>
+        </div>
+
+        <div class="display-5 fw-900">2.flex-row-reverse</div>
+        <!-- 翻轉 -->
+        <div class="row flex-lg-row-reverse">
+            <div class="col-3">
+                <div class="box01 bg-success display-2 text-center fw-900">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success display-2 text-center fw-900">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success display-2 text-center fw-900">03</div>
+            </div>
+        </div>
+
+        <div class="display-5 fw-900">3. flex-column</div>
+        <!-- 垂直 -->
+        <div class="row flex-column">
+            <div class="col-3 mt-4">
+                <div class="box01 bg-success display-2 text-center fw-900">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success display-2 text-center fw-900">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success display-2 text-center fw-900">03</div>
+            </div>
+        </div>
+
+        <div class="display-5 fw-900 mt-4">4. flex-column-reverse</div>
+        <!-- 垂直 -->
+        <div class="row flex-column-reverse">
+            <div class="col-3">
+                <div class="box01 bg-success display-2 text-center fw-900">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success display-2 text-center fw-900">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success display-2 text-center fw-900">03</div>
+            </div>
+        </div>
+
+        <div class="display-5 fw-900 mt-md-5">5. flex-contant-start</div>
+        <!-- 垂直 -->
+        <div class="row justify-content-start">
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">01</div>
+            </div>
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">02</div>
+            </div>
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">03</div>
+            </div>
+        </div>
+
+        <div class="display-5 fw-900 mt-md-5">6. justif-content-center</div>
+        <!-- 垂直 -->
+        <div class="row justify-content-center">
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">01</div>
+            </div>
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">02</div>
+            </div>
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">03</div>
+            </div>
+        </div>
+
+        <div class="display-5 fw-900 mt-4">7. justif-content-end</div>
+        <!-- 垂直 -->
+        <div class="row justify-content-end">
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">01</div>
+            </div>
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">02</div>
+            </div>
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">03</div>
+            </div>
+        </div>
+
+        <div class="display-5 fw-900 mt-4">8. justify-content-around</div>
+        <!-- 垂直 -->
+        <div class="row justify-content-around">
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">01</div>
+            </div>
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">02</div>
+            </div>
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">03</div>
+            </div>
+        </div>
+
+        <div class="display-5 fw-900 mt-4">9. justify-content-between</div>
+        <!-- 垂直 -->
+        <div class="row justify-content-between">
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">01</div>
+            </div>
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">02</div>
+            </div>
+            <div class="col-2">
+                <div class="box01 bg-warning display-2 text-center fw-900">03</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="display-5 fw-900 mt-4">10. align-item-start, center, end; align-self-start, center, end</div>
+        <!-- 垂直 -->
+    <div class="row flex-md-column align-items-center">
+        <div class="col-2 align-self-lg-start">
+            <div class="box01 bg-primary display-2 text-center fw-900">01</div>
+        </div>
+        <div class="col-2">
+            <div class="box01 bg-primary display-2 text-center fw-900">02</div>
+        </div>
+        <div class="col-2 align-self-lg-end">
+            <div class="box01 bg-primary display-2 text-center fw-900">03</div>
+        </div>
+        <div class="col-2">
+            <div class="box01 bg-primary display-2 text-center fw-900">04</div>
+        </div>
+        <div class="col-2 align-self-lg-start">
+            <div class="box01 bg-primary display-2 text-center fw-900">05</div>
+        </div>
+    </div>
+
+    <div class="display-5 fw-900 mt-4">11. order</div>
+
+    <div class="row flex-row">
+    <!-- 方塊 01 -->
+        <div class="col-2 order-1 order-sm-2 order-md-3 order-lg-4 order-xl-5 order-xxl-1">
+            <div class="box01 bg-secondary display-2 text-center fw-900">01</div>
+        </div>
+
+    <!-- 方塊 02 -->
+        <div class="col-2 order-2 order-sm-3 order-md-4 order-lg-5 order-xl-1 order-xxl-2">
+            <div class="box01 bg-secondary display-2 text-center fw-900">02</div>
+        </div>
+
+    <!-- 方塊 03 -->
+        <div class="col-2 order-3 order-sm-4 order-md-5 order-lg-1 order-xl-2 order-xxl-3">
+            <div class="box01 bg-secondary display-2 text-center fw-900">03</div>
+        </div>
+
+    <!-- 方塊 04 -->
+        <div class="col-2 order-4 order-sm-5 order-md-1 order-lg-2 order-xl-3 order-xxl-4">
+            <div class="box01 bg-secondary display-2 text-center fw-900">04</div>
+        </div>
+
+    <!-- 方塊 05 -->
+        <div class="col-2 order-5 order-sm-1 order-md-2 order-lg-3 order-xl-4 order-xxl-5">
+            <div class="box01 bg-secondary display-2 text-center fw-900">05</div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

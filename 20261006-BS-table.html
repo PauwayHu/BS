@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opendata - 地方美食餐廳列表</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myallcss.css">
+    <style>
+        @media screen and (max-width: 768px){
+            .table-rwd thead{
+                display: none;
+                border: 2px solid #963636;
+                margin-top: 15px;
+            }
+
+            .table-rwd tbody tr td{
+                display: block;
+                overflow: hidden;
+            }
+
+            .table-rwd tbody tr td::before{
+                content: attr(data-th) " : ";
+                font-weight: 20px;
+                font-weight: 900;
+                display: block;
+                float: left;
+                width: 30%;
+                text-align: right;
+                padding-right: 15px;
+                color: #963636;
+            }
+
+            .table-rwd tbody tr td span{
+                display: block;
+                float: left;
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="display-2 fw-900 text-cenyer my-4">地方美食餐廳列表</div>
+        <table class="table table-bordered table-rwd">
+            <thead class="table-dark">
+                <tr>
+                    <th width="10%">餐廳名稱</th>
+                    <th width="25%">餐廳圖片</th>
+                    <th width="10%">餐廳地址</th>
+                    <th width="10%">餐廳電話</th>
+                    <th width="10%">餐廳信箱</th>
+                    <th width="25%">餐廳簡介</th>
+                </tr>
+            </thead>
+            <tbody id="mytbody">
+                <tr>
+                    <!-- <td data-th="餐廳名稱"><span></span></td>
+                    <td data-th="餐廳圖片"><span><img src="images/building01.avif" alt=""></span></td>
+                    <td data-th="餐廳地址"><span></span></td>
+                    <td data-th="餐廳電話"><span></span></td>
+                    <td data-th="餐廳信箱"><span></span></td>
+                    <td data-th="餐廳簡介"><span class="text-truncate" style="max-width: 450px; display:block;">激烈最終為何註冊消除協助檢驗還沒信心，請問生意紅色，查詢得分不知尊重感覺到因為指出不如連結每月陽光五金，補充一口好了龍岡精品直到禁止房間疾病藍色確認經濟發展，讀者不起認真批准以後你還參與加強猶豫有的下面主題出席，畢業來電擁有減少他在世界上，採取身體，購買。</span></td> -->
+                </tr>
+                <tr>
+                    <td>XXXX</td>
+                    <td>XXXX</td>
+                    <td>XXXX</td>
+                    <td>XXXX</td>
+                    <td>XXXX</td>
+                    <td>XXXX</td>
+                </tr>
+                <tr>
+                    <td>XXXX</td>
+                    <td>XXXX</td>
+                    <td>XXXX</td>
+                    <td>XXXX</td>
+                    <td>XXXX</td>
+                    <td>XXXX</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script>
+        
+        //主程式: 開始必定執行的地方
+        $(function(){
+            //抓取外部資料-農村地方美食小吃特色料理
+            $.ajax({
+                type: "GET",
+                url: "https://data.moa.gov.tw/Service/OpenData/ODwsv/ODwsvTravelFood.aspx?IsTransData=1&UnitId=193",
+                dataType: "json",
+                success: showdata,
+                error: function(){
+                    console.log("抓取外部資料 - 農村地方美食小吃特色料理 - 失敗")
+                }
+            });
+        });
+
+        //自訂函式 副程式
+        function showdata(data){
+            console.log(data);
+            $("#mytbody").empty();
+
+            data.forEach(function(item){
+                console.log(item.Name);
+
+                const strHTML = `<tr>
+                                    <td data-th="餐廳名稱"><span>${item.Name}</span></td>
+                                    <td data-th="餐廳圖片"><span><img src="${item.PicURL}" alt=""></span></td>
+                                    <td data-th="餐廳地址"><span>${item.City}${item.Town}${item.Address}</span></td>
+                                    <td data-th="餐廳電話"><span>${item.Tel}</span></td>
+                                    <td data-th="餐廳信箱"><span>${item.Email}</span></td>
+                                    <td data-th="餐廳簡介"><span class="text-truncate" style="max-width: 450px; display:block;">${item.FoodFeature}</span></td>
+                                 </tr>`;
+                $("#mytbody").append(strHTML);
+            });
+        }
+    </script>
+</body>
+</html>

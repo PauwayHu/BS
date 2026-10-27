@@ -1,0 +1,11 @@
+在cmd中切換到要上傳的資料夾
+cd C:\Users\user\Desktop\gitfile\java_travelfood
+檢查
+git status
+將檔案加入上傳 . 是指全部上傳
+git add .
+顯示綠色就是對的
+git status
+git commit -m "更新index.html頁面"
+有上傳過就不用打帳密
+git push

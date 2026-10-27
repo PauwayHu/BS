@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap - Table(表格)</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myallcss.css">
+    <style>
+        :root{
+            --border01: #f58b26;
+        }
+        @media screen and (max-width: 768px){
+            .table-rwd thead{
+                display: none;
+            }
+            .table-rwd tbody tr{
+                display: block;
+                margin-top: 15px;
+                border: 1px solid var(--border01);
+                border-radius: 5px;
+            }
+            .table-rwd tbody tr td{
+                display: block;
+                overflow: hidden;
+            }
+            /*偽元素*/
+            .table-rwd tbody tr td::before{
+                content: attr(data-th)" : ";
+                font-weight: 900;
+                color: blueviolet;
+                display: block;
+                float: left;
+                width: 30%;
+                text-align: right;
+                padding-right: 10px;
+
+            }
+            .table-rwd tbody tr td span{
+                display: block;
+                float: left;
+                width: 70%;
+                font-size: 18px;
+            }
+
+
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="display-2 fw-900 text-center mt-4">飲料產品列表</div>
+
+
+        <table class="table table-rwd mt-4 table-bordered table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>產品編號</th>
+                    <th>產品名稱</th>
+                    <th>產品價格</th>
+                    <th>產品數量</th>
+                    <th>產品備註</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-primary">
+                    <td data-th="產品編號"><span>01</span></td>
+                    <td data-th="產品名稱"><span>美式咖啡</span></td>
+                    <td data-th="產品價格"><span>60</span></td>
+                    <td data-th="產品數量"><span>10</span></td>
+                    <td data-th="產品備註"><span>無糖去冰</span></td>
+                </tr>
+                <tr>
+                    <td data-th="產品編號"><span>02</span></td>
+                    <td data-th="產品名稱"><span>歐式咖啡</span></td>
+                    <td data-th="產品價格"><span>60</span></td>
+                    <td data-th="產品數量"><span>10</span></td>
+                    <td data-th="產品備註"><span>無糖去冰</span></td>
+                </tr>
+                <tr>
+                    <td data-th="產品編號"><span>03</span></td>
+                    <td data-th="產品名稱"><span>中式咖啡</span></td>
+                    <td data-th="產品價格"><span>60</span></td>
+                    <td data-th="產品數量"><span>10</span></td>
+                    <td data-th="產品備註"><span>無糖去冰</span></td>
+                </tr>
+                <tr>
+                    <td data-th="產品編號"><span>04</span></td>
+                    <td data-th="產品名稱"><span>澳式咖啡</span></td>
+                    <td data-th="產品價格"><span>60</span></td>
+                    <td data-th="產品數量"><span>10</span></td>
+                    <td data-th="產品備註"><span>無糖去冰</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

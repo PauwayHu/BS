@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20261008-test01</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myallcss.css">
+    <style>
+        .box01 {
+            height: 200px;
+            background-image: url(images/building04.avif);
+        }
+
+        .box02 {
+            height: 180px;
+            margin-top: 5px;
+            line-height: 180px;
+            background-color: var(--mycolor01);
+            color: var(--textcolor04);
+        }
+
+        .box03 {
+            border: 2px solid var(--bg-outer-dark);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px 5px var(--bg-outer-dark);
+
+        }
+
+        .box03 .h4 {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .box02 {
+                height: 100px;
+                line-height: 100px;
+            }
+        }
+
+        @media screen and (min-width: 992px) {
+            .box02 {
+                width: 220px;
+                height: 220px;
+                border-radius: 50%;
+                line-height: 220px;
+                background-color: var(--bg-outer-dark);
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+
+            .box02:hover {
+                background-color: var(--bg-outer-dark);
+                color: var(--text-light);
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            .box02 {
+                width: 260px;
+                height: 260px;
+                line-height: 260px;
+                background-color: var(--bg-footer-caramel);
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
+
+            .box02:hover {
+                background-color: var(--textcolor02);
+                color: var(--bg-footer-caramel);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-none d-sm-block">
+                <div class="box01 bg-info bg-img"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="box02 h1 fw-900 text-center bg-success">選單01</div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="box02 h1 fw-900 text-center bg-success">選單02</div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="box02 h1 fw-900 text-center bg-success">選單03</div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="box02 h1 fw-900 text-center bg-success">選單04</div>
+            </div>
+        </div>
+        <div class="row" id="travelfood-list">
+            <div class="col-md-6 col-lg-4 mt-3">
+                <div class="box03">
+                    <img src="images/building01.avif" class="img-fluid" alt="">
+                    <div class="h3">地址: XXXX</div>
+                    <div class="h3">電話: XXXX</div>
+                    <div class="h3">簡介: XXXX</div>
+                </div>
+            </div>
+            <!-- <div class="col-md-6 col-lg-4 box03 text-center">
+                <img src="images/buliding02.avif" class="img-fluid" alt="">
+                <div class="h4 fw-900">旅遊景點介紹002</div>
+                <p>等人怪物迅速我市會議組成空氣安裝規律也有舉行精采日本，差不多提示執行給你爭取不得不一人幾個凱文鏡頭到達，內容顯得不夠傳說目錄幫忙基礎容量球隊一步也會傳說可能行政，全國反對中學熱點及時機場精神區別作業，傳奇羅東我說，如有超市攝影圖形地圖，世界上東京玩具是因。</p>
+            </div>
+            <div class="col-md-6 col-lg-4 box03 text-center">
+                <img src="images/building03.avif" class="img-fluid" alt="">
+                <div class="h4 fw-900">旅遊景點介紹003</div>
+                <p>等人怪物迅速我市會議組成空氣安裝規律也有舉行精采日本，差不多提示執行給你爭取不得不一人幾個凱文鏡頭到達，內容顯得不夠傳說目錄幫忙基礎容量球隊一步也會傳說可能行政，全國反對中學熱點及時機場精神區別作業，傳奇羅東我說，如有超市攝影圖形地圖，世界上東京玩具是因。</p>
+            </div>
+            <div class="col-md-6 col-lg-4 box03 text-center">
+                <img src="images/building03.avif" class="img-fluid" alt="">
+                <div class="h4 fw-900">旅遊景點介紹004</div>
+                <p>等人怪物迅速我市會議組成空氣安裝規律也有舉行精采日本，差不多提示執行給你爭取不得不一人幾個凱文鏡頭到達，內容顯得不夠傳說目錄幫忙基礎容量球隊一步也會傳說可能行政，全國反對中學熱點及時機場精神區別作業，傳奇羅東我說，如有超市攝影圖形地圖，世界上東京玩具是因。</p>
+            </div>
+            <div class="col-md-6 col-lg-4 box03 text-center">
+                <img src="images/building03.avif" class="img-fluid" alt="">
+                <div class="h4 fw-900">旅遊景點介紹005</div>
+                <p>等人怪物迅速我市會議組成空氣安裝規律也有舉行精采日本，差不多提示執行給你爭取不得不一人幾個凱文鏡頭到達，內容顯得不夠傳說目錄幫忙基礎容量球隊一步也會傳說可能行政，全國反對中學熱點及時機場精神區別作業，傳奇羅東我說，如有超市攝影圖形地圖，世界上東京玩具是因。</p>
+            </div>
+            <div class="col-md-6 col-lg-4 box03 text-center">
+                <img src="images/building03.avif" class="img-fluid" alt="">
+                <div class="h4 fw-900">旅遊景點介紹006</div>
+                <p>等人怪物迅速我市會議組成空氣安裝規律也有舉行精采日本，差不多提示執行給你爭取不得不一人幾個凱文鏡頭到達，內容顯得不夠傳說目錄幫忙基礎容量球隊一步也會傳說可能行政，全國反對中學熱點及時機場精神區別作業，傳奇羅東我說，如有超市攝影圖形地圖，世界上東京玩具是因。</p>
+            </div> -->
+        </div>
+        <div class="row">
+            <div class="col-12 mt-3 d-none d-md-block fw-900 text-center bg-secondary py-2 h4">POWER BY XXX 2026.10</div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function(){
+            //介接資料
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:3000/travelfood",
+                dataType: "json",
+                success: showdata,
+                error: function(){
+                    console.log("介接失敗");
+                    alert("介接失敗");
+                }
+            });
+        });
+
+        function showdata(data){
+            console.log(data);
+            $("#travelfood-list").empty();
+            data.forEach(function(item){
+                const strHTML = `<div class="col-md-6 col-lg-4   mt-3">
+                <div class="box03">
+                    <img src="images/building01.avif" class="img-fluid" alt="">
+                    <div class="h4 fw-900 text-center mt-3">${item.Name}</div>
+                    <div class="h3">地址: ${item.City}${item.Town}${item.Address}</div>
+                    <div class="h3">電話: ${item.Tel}</div>
+                    <div class="h3">簡介: ${item.HostWords}</div>
+                </div>
+            </div>`;
+                $("#travelfood-list").append(strHTML);
+            });
+        }
+    </script>
+</body>
+</html>
