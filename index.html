@@ -3,33 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>學習首頁</title>
+    <title>前端學習歷程 | 目錄首頁</title>
+    <!-- 沿用你專案中的 Bootstrap 與自定義 CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/myallcss.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* 淺灰背景讓卡片更立體 */
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+        }
+        
+        /* 頁首橫幅風格 */
+        .hero-header {
+            background: linear-gradient(135deg, #2C3E50 0%, #1a252f 100%);
+            border-bottom: 5px solid #E60012;
+        }
+
+        /* 卡片與清單懸停特效 */
+        .portfolio-card {
+            border: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .list-group-item {
+            padding: 1rem 1.5rem;
+            transition: all 0.2s ease-in-out;
+            border-left: 4px solid transparent;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .list-group-item:hover {
+            background-color: #fff9f9;
+            border-left: 4px solid #E60012;
+            color: #E60012;
+            transform: translateX(4px);
+        }
+
+        .item-date {
+            font-size: 0.85rem;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-    <div class="mytitle-01">歷程筆記展示</div>
-    <ul>
-        <!-- target="_blank"--讓網頁跳出一個新分頁 -->
-        <li><a href="20260924-javascript.html" target="_blank">HTML and CSS排版練習(20260923)</a></li>
-        <li><a href="20260929TravelFood.html" target="_blank">JS語法練習,使用opendata travelfood(20260929)</a></li>
-        <li><a href="20261001-BS-1.html" target="_blank">bookstrap</a></li>
-        <li><a href="20261001-BS-table.html" target="_blank">bookstrap飲料表格練習</a></li>
-        <li><a href="20261006-BS-table.html" target="_blank">bookstrap地方美食表格練習(opendata)</a></li>
-        <li><a href="20261006-ch6.html" target="_blank">Bookstrap 切版練習01</a></li>
-        <li><a href="20261006-test.html" target="_blank">Bookstrap 切版練習02</a></li>
-        <li><a href="20261008-7-flex.html" target="_blank">flex練習01</a></li>
-        <li><a href="20261008-test01.html" target="_blank">flex練習02</a></li>
-        <li><a href="20261013-ch7-flex-01.html" target="_blank">時間軸練習01</a></li>
-        <li><a href="20261015_ch8_form01.html" target="_blank">forms表單練習01</a></li>
-        <li><a href="20261015_ch8_form02.html" target="_blank">forms表單練習02</a></li>
-        <li><a href="20261015_ch8_form03_test.html" target="_blank">forms表單自主練習01</a></li>
-        <li><a href="20261027_ch8_ai.html" target="_blank">forms表單Gemini-Pro寫的</a></li>
-        <li><a href="personl-01.html" target="_blank">個人履歷</a></li>
 
-        
-        
-        
-    </ul>
+    <!-- 頁首橫幅 -->
+    <header class="hero-header text-white py-5 mb-5 text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-2">歷程筆記展示</h1>
+            <p class="lead mb-0 text-light opacity-75">Web 前端開發學習紀錄與作品集</p>
+        </div>
+    </header>
+
+    <!-- 主要內容區 -->
+    <main class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                
+                <div class="card portfolio-card">
+                    <div class="card-header bg-white py-3 border-bottom-0">
+                        <h5 class="mb-0 fw-bold text-secondary">
+                            <span class="text-danger me-2">|</span>專案目錄清單
+                        </h5>
+                    </div>
+                    
+                    <!-- 檔案連結清單 -->
+                    <div class="list-group list-group-flush">
+                        
+                        <a href="20260924-javascript.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>HTML and CSS 排版練習</span>
+                            <span class="item-date">2026-09-23</span>
+                        </a>
+                        
+                        <a href="20260929TravelFood.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>JS 語法練習 (OpenData TravelFood)</span>
+                            <span class="item-date">2026-09-29</span>
+                        </a>
+                        
+                        <a href="20261001-BS-1.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>Bootstrap 基礎</span>
+                            <span class="badge bg-secondary rounded-pill">BS5</span>
+                        </a>
+                        
+                        <a href="20261001-BS-table.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>Bootstrap 飲料表格練習</span>
+                            <span class="badge bg-secondary rounded-pill">BS5</span>
+                        </a>
+                        
+                        <a href="20261006-BS-table.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>Bootstrap 地方美食表格練習 (OpenData)</span>
+                            <span class="badge bg-secondary rounded-pill">BS5</span>
+                        </a>
+                        
+                        <a href="20261006-ch6.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>Bootstrap 切版練習 01</span>
+                            <span class="badge bg-secondary rounded-pill">BS5</span>
+                        </a>
+                        
+                        <a href="20261006-test.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>Bootstrap 切版練習 02</span>
+                            <span class="badge bg-secondary rounded-pill">BS5</span>
+                        </a>
+                        
+                        <a href="20261008-7-flex.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>Flex 網格練習 01</span>
+                            <span class="item-date">CSS</span>
+                        </a>
+                        
+                        <a href="20261008-test01.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>Flex 網格練習 02</span>
+                            <span class="item-date">CSS</span>
+                        </a>
+                        
+                        <a href="20261013-ch7-flex-01.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>時間軸切版練習 01</span>
+                            <span class="item-date">UI/UX</span>
+                        </a>
+                        
+                        <a href="20261015_ch8_form01.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>Forms 表單練習 01</span>
+                            <span class="badge bg-danger rounded-pill">JS</span>
+                        </a>
+                        
+                        <a href="20261015_ch8_form02.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>Forms 表單練習 02</span>
+                            <span class="badge bg-danger rounded-pill">JS</span>
+                        </a>
+                        
+                        <a href="20261015_ch8_form03_test.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <span>Forms 表單自主練習 01</span>
+                            <span class="badge bg-danger rounded-pill">JS</span>
+                        </a>
+                        
+                        <a href="20261027_ch8_ai.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center fw-bold">
+                            <span>Forms 表單 (Gemini 協作優化版)</span>
+                            <span class="badge bg-primary rounded-pill">AI 協作</span>
+                        </a>
+
+                        <!-- 新增的個人履歷項目 -->
+                        <a href="personl-01.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center fw-bold">
+                            <span class="text-dark">個人履歷</span>
+                            <span class="badge bg-success rounded-pill">Resume</span>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.js"></script>
 </body>
 </html>
