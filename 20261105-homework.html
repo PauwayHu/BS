@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +9,85 @@
     <link rel="stylesheet" href="css/myallcss.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- 加入平滑滾動與導覽列高度修正，確保點擊會正確跳轉不被擋住 -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+            /* 這個數值對應你的導覽列高度，防止跳轉時標題被導覽列蓋住 */
+        }
+    </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#main-nav" data-bs-offset="70">
+
+<body data-bs-spy="scroll" data-bs-target="#main-nav" data-bs-offset="85">
+
+    <!-- 隱藏的側邊抽屜選單 (Offcanvas) -->
+    <div class="offcanvas offcanvas-start bg-navy text-white" tabindex="-1" id="quickNavMenu"
+        aria-labelledby="quickNavMenuLabel">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title fw-bold text-teal fs-4" id="quickNavMenuLabel">
+                <i class="fa-solid fa-compass me-2"></i>網站導覽
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <div class="list-group list-group-flush mt-2">
+                <a href="#s01_banner" class="list-group-item list-group-item-action bg-transparent text-white border-secondary fs-5 py-3 ps-4 auto-close">
+                    <i class="fa-solid fa-house text-teal me-3"></i> 返回首頁
+                </a>
+                <a href="#s02_motivation" class="list-group-item list-group-item-action bg-transparent text-white border-secondary fs-5 py-3 ps-4 auto-close">
+                    <i class="fa-solid fa-flag text-teal me-3"></i> 專題動機
+                </a>
+                <a href="#s03_solution" class="list-group-item list-group-item-action bg-transparent text-white border-secondary fs-5 py-3 ps-4 auto-close">
+                    <i class="fa-solid fa-lightbulb text-teal me-3"></i> 核心解決方案
+                </a>
+                <a href="#s05_timeline" class="list-group-item list-group-item-action bg-transparent text-white border-secondary fs-5 py-3 ps-4 auto-close">
+                    <i class="fa-solid fa-timeline text-teal me-3"></i> 開發里程碑
+                </a>
+                <a href="#s06_ai" class="list-group-item list-group-item-action bg-transparent text-white border-secondary fs-5 py-3 ps-4 auto-close">
+                    <i class="fa-solid fa-eye text-teal me-3"></i> YOLO 影像辨識
+                </a>
+                <a href="#s07_hardware" class="list-group-item list-group-item-action bg-transparent text-white border-secondary fs-5 py-3 ps-4 auto-close">
+                    <i class="fa-solid fa-microchip text-teal me-3"></i> 硬體架構
+                </a>
+                <a href="#s10_future_tech" class="list-group-item list-group-item-action bg-transparent text-white border-secondary fs-5 py-3 ps-4 auto-close">
+                    <i class="fa-solid fa-rocket text-teal me-3"></i> 未來展望
+                </a>
+                <a href="#s14_team" class="list-group-item list-group-item-action bg-transparent text-white border-secondary fs-5 py-3 ps-4 auto-close">
+                    <i class="fa-solid fa-users text-teal me-3"></i> 團隊成員
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- 導覽列 -->
     <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark bg-navy fixed-top shadow">
         <div class="container">
-            <a class="navbar-brand fw-bold text-teal" href="#"><i class="fa-solid fa-ship me-2"></i>Saga USV</a>
+            <a class="navbar-brand fw-bold text-teal" href="#s01_banner"><i class="fa-solid fa-ship me-2"></i>Saga
+                USV</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <!-- 加上 align-items-center 確保按鈕跟文字對齊 -->
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="#s01_banner">首頁</a></li>
                     <li class="nav-item"><a class="nav-link" href="#s02_motivation">專題動機</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#s03_solution">核心方案</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#s04_stats">實測數據</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#s05_timeline">開發歷程</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#s06_ai">影像辨識</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#s07_hardware">硬體架構</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#s10_future_tech">未來展望</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#s14_team">團隊成員</a></li>
+
+                    <!-- 這裡就是新加入導覽列的「快速導覽」按鈕 -->
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <button class="btn btn-teal rounded-pill px-4 py-2 fw-bold shadow-sm" type="button"
+                            data-bs-toggle="offcanvas" data-bs-target="#quickNavMenu" aria-controls="quickNavMenu"
+                            style="background-color: var(--brand-teal); color: white; border: none;">
+                            <i class="fa-solid fa-bars me-2"></i> 快速導覽
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -38,18 +102,22 @@
             <p class="lead mb-5 wow animate__animated animate__fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.3s">
                 基於 YOLO 深度學習與 ROS2 架構的微型無人水面廢棄物打撈船
             </p>
-            <a href="#s02_motivation" class="btn btn-outline-light btn-lg rounded-pill px-5 py-3 wow animate__animated animate__fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.6s">
-                探索專案 <i class="fa-solid fa-arrow-down ms-2"></i>
-            </a>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <!-- 這裡只保留探索專案，按鈕移去 Navbar 了 -->
+                <a href="#s02_motivation"
+                    class="btn btn-outline-light btn-lg rounded-pill px-5 py-3 wow animate__animated animate__fadeInUp"
+                    data-wow-duration="1.5s" data-wow-delay="0.6s">
+                    探索專案 <i class="fa-solid fa-arrow-down ms-2"></i>
+                </a>
+            </div>
         </div>
     </section>
 
-<!-- Section 2: 專題動機 -->
+    <!-- Section 2: 專題動機 -->
     <section id="s02_motivation" class="section-padding bg-light-gray">
         <div class="container">
             <h2 class="text-center section-title display-5 fw-bold wow animate__animated animate__fadeInUp">水域污染的挑戰</h2>
             <div class="row align-items-center mt-5">
-                <!-- 左側：替換為成果展現場照片 -->
                 <div class="col-md-6 wow animate__animated animate__slideInLeft">
                     <img src="images/boat05.jpg" alt="專題成果展覽現場" class="img-fluid rounded shadow-lg" loading="lazy">
                 </div>
@@ -75,7 +143,8 @@
                     <div class="p-4">
                         <i class="fa-solid fa-eye text-teal fa-4x mb-4"></i>
                         <h4 class="fw-bold mb-3 mytitle-03">YOLO 影像辨識</h4>
-                        <p class="text-light opacity-75 mytitle-04">採用 Jetson Nano 運行輕量化 YOLOv12-N 模型，即時辨識水面上的寶特瓶與塑膠袋。</p>
+                        <p class="text-light opacity-75 mytitle-04">採用 Jetson Nano 運行輕量化 YOLOv12-N 模型，即時辨識水面上的寶特瓶與塑膠袋。
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.3s">
@@ -126,10 +195,10 @@
     <!-- Section 5: 開發時間軸 (Timeline) -->
     <section id="s05_timeline" class="section-padding bg-dark-boat">
         <div class="container">
-            <h2 class="text-center section-title text-white wow animate__animated animate__fadeInUp mytitle-02">專案開發里程碑</h2>
-            
+            <h2 class="text-center section-title text-white wow animate__animated animate__fadeInUp mytitle-02">專案開發里程碑
+            </h2>
+
             <div class="timeline mt-5">
-                
                 <!-- 階段 1: 左側 -->
                 <div class="timeline-item left wow animate__animated animate__fadeInLeft" data-wow-duration="1s">
                     <div class="bg-navy p-4 rounded shadow">
@@ -139,9 +208,9 @@
                         </p>
                     </div>
                 </div>
-
                 <!-- 階段 2: 右側 -->
-                <div class="timeline-item right wow animate__animated animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s">
+                <div class="timeline-item right wow animate__animated animate__fadeInRight" data-wow-duration="1s"
+                    data-wow-delay="0.2s">
                     <div class="bg-navy p-4 rounded shadow">
                         <h4 class="text-teal fw-bold mb-2">系統架構與介面設計</h4>
                         <p class="text-light mb-0 mytitle-04" style="line-height: 1.6;">
@@ -149,9 +218,9 @@
                         </p>
                     </div>
                 </div>
-
                 <!-- 階段 3: 左側 -->
-                <div class="timeline-item left wow animate__animated animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
+                <div class="timeline-item left wow animate__animated animate__fadeInLeft" data-wow-duration="1s"
+                    data-wow-delay="0.2s">
                     <div class="bg-navy p-4 rounded shadow">
                         <h4 class="text-teal fw-bold mb-2">核心程式撰寫與 YOLO 訓練</h4>
                         <p class="text-light mb-0 mytitle-04" style="line-height: 1.6;">
@@ -159,9 +228,9 @@
                         </p>
                     </div>
                 </div>
-
                 <!-- 階段 4: 右側 -->
-                <div class="timeline-item right wow animate__animated animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s">
+                <div class="timeline-item right wow animate__animated animate__fadeInRight" data-wow-duration="1s"
+                    data-wow-delay="0.2s">
                     <div class="bg-navy p-4 rounded shadow">
                         <h4 class="text-teal fw-bold mb-2">實體組裝與封閉水域測試</h4>
                         <p class="text-light mb-0 mytitle-04" style="line-height: 1.6;">
@@ -169,24 +238,22 @@
                         </p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-<!-- Section 6: AI 影像辨識與訓練 (展示 yolo 照片) -->
+    <!-- Section 6: AI 影像辨識與訓練 -->
     <section id="s06_ai" class="section-padding bg-light-gray">
         <div class="container">
-            <h2 class="text-center section-title display-5 fw-bold wow animate__animated animate__fadeInUp">YOLO 影像辨識與訓練流程</h2>
+            <h2 class="text-center section-title display-5 fw-bold wow animate__animated animate__fadeInUp">YOLO
+                影像辨識與訓練流程</h2>
             <p class="text-center text-muted mb-5 fs-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.1s">
                 使用 labelImg 進行資料標註，並透過模型即時推論，精準辨識水面廢棄物。
             </p>
-            
+
             <div class="row g-4">
-                <!-- 圖 1：資料標註 -->
                 <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.1s">
                     <div class="card h-100 border-0 shadow-sm">
-                        <!-- 這裡加上了 card-img-fixed -->
                         <img src="images/yolo03.jpg" class="card-img-top card-img-fixed" alt="資料標註" loading="lazy">
                         <div class="card-body bg-white text-center p-4">
                             <h4 class="fw-bold text-navy mb-3">影像資料標註</h4>
@@ -194,11 +261,8 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- 圖 2：單一物件偵測 -->
                 <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.3s">
                     <div class="card h-100 border-0 shadow-sm">
-                        <!-- 這裡加上了 card-img-fixed -->
                         <img src="images/yolo01.jpg" class="card-img-top card-img-fixed" alt="模型即時推論" loading="lazy">
                         <div class="card-body bg-white text-center p-4">
                             <h4 class="fw-bold text-navy mb-3">即時模型推論</h4>
@@ -206,11 +270,8 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- 圖 3：複雜環境偵測 -->
                 <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.5s">
                     <div class="card h-100 border-0 shadow-sm">
-                        <!-- 這裡加上了 card-img-fixed -->
                         <img src="images/yolo02.jpg" class="card-img-top card-img-fixed" alt="複雜環境辨識" loading="lazy">
                         <div class="card-body bg-white text-center p-4">
                             <h4 class="fw-bold text-navy mb-3">多物件與雜訊干擾測試</h4>
@@ -225,13 +286,12 @@
     <!-- Section 7: 無人船硬體與實體展示 -->
     <section id="s07_hardware" class="section-padding bg-portfolio">
         <div class="container">
-            <!-- 放大主標題 -->
-            <h2 class="text-center section-title display-5 fw-bold wow animate__animated animate__fadeInUp">無人船硬體架構與實測</h2>
-            
+            <h2 class="text-center section-title display-5 fw-bold wow animate__animated animate__fadeInUp">無人船硬體架構與實測
+            </h2>
             <div class="row align-items-center mt-5">
-                <!-- 左側：實體船隻照片輪播 (Carousel) -->
                 <div class="col-lg-6 mb-4 mb-lg-0 wow animate__animated animate__fadeInLeft">
-                    <div id="boatCarousel" class="carousel slide shadow-lg rounded overflow-hidden" data-bs-ride="carousel">
+                    <div id="boatCarousel" class="carousel slide shadow-lg rounded overflow-hidden"
+                        data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="images/boat01.jpg" class="d-block w-100" alt="無人船正面測試" loading="lazy">
@@ -243,27 +303,24 @@
                                 <img src="images/boat03.jpg" class="d-block w-100" alt="水面實測" loading="lazy">
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#boatCarousel" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#boatCarousel"
+                            data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">上一張</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#boatCarousel" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#boatCarousel"
+                            data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">下一張</span>
                         </button>
                     </div>
                 </div>
-
-                <!-- 右側：硬體規格毛玻璃卡片 -->
                 <div class="col-lg-6">
                     <div class="row g-4">
                         <div class="col-sm-6 wow animate__animated animate__fadeInUp" data-wow-delay="0.1s">
                             <div class="s07-portfolio-card p-4 h-100 text-center">
-                                <!-- 放大圖示 fa-2x -> fa-3x -->
                                 <i class="fa-solid fa-microchip text-teal fa-3x mb-3"></i>
-                                <!-- 放大卡片標題 -->
                                 <h5 class="fw-bold text-navy fs-4 mb-3">Jetson Nano</h5>
-                                <!-- 放大內文 -->
                                 <p class="text-muted fs-6 mb-0 mytitle-05">負責邊緣運算與 YOLO 即時影像辨識推論。</p>
                             </div>
                         </div>
@@ -294,14 +351,15 @@
         </div>
     </section>
 
-    <!-- Section 8: 系統自動化決策邏輯 (三級防護機制) -->
+    <!-- Section 8: 系統自動化決策邏輯 -->
     <section id="s08_automation" class="section-padding bg-navy text-white">
         <div class="container">
-            <h2 class="text-center section-title display-5 fw-bold wow animate__animated animate__fadeInUp">自動化決策與控制邏輯</h2>
-            <p class="text-center text-light opacity-75 mb-5 fs-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+            <h2 class="text-center section-title display-5 fw-bold wow animate__animated animate__fadeInUp">自動化決策與控制邏輯
+            </h2>
+            <p class="text-center text-light opacity-75 mb-5 fs-4 wow animate__animated animate__fadeInUp"
+                data-wow-delay="0.1s">
                 透過樹莓派與 ROS2，系統具備三級自動化檢測與返航機制，確保航行安全。
             </p>
-            
             <div class="row text-center g-4">
                 <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">
                     <div class="p-4 border border-info rounded h-100 bg-dark-boat">
@@ -328,33 +386,39 @@
         </div>
     </section>
 
-<!-- Section 9: 系統架構 -->
+    <!-- Section 9: 系統架構 -->
     <section id="s09_ros2" class="section-padding bg-light-gray">
         <div class="container">
-            <h2 class="text-center section-title display-5 fw-bold wow animate__animated animate__fadeInUp">系統硬體與通訊架構</h2>
+            <h2 class="text-center section-title display-5 fw-bold wow animate__animated animate__fadeInUp">系統硬體與通訊架構
+            </h2>
             <div class="row align-items-center mt-5">
                 <div class="col-md-6 wow animate__animated animate__slideInLeft">
                     <h4 class="fw-bold text-navy mb-4">模組化的控制機制</h4>
                     <ul class="list-unstyled fs-5 text-muted line-height-lg">
-                        <li class="mb-4 mytitle-06"><i class="fa-solid fa-microchip text-teal me-2"></i> <strong>核心中樞：</strong> 使用樹莓派 5 統籌各感測器與運算，並由鋰電池獨立供電。</li>
-                        <li class="mb-4 mytitle-06"><i class="fa-solid fa-eye text-teal me-2"></i> <strong>感測輸入：</strong> 光達 (RPLIDAR) 與攝像機皆透過 USB 介面回傳環境與影像數據。</li>
-                        <li class="mb-4 mytitle-06"><i class="fa-solid fa-gears text-teal me-2"></i> <strong>動力控制：</strong> 樹莓派將指令傳遞至 Arduino，再由 GPIO 控制 IBT-2 驅動模組，精準操控直流馬達。</li>
-                        <li class="mb-4 mytitle-06"><i class="fa-solid fa-network-wired text-teal me-2"></i> <strong>ROS2 通訊：</strong> 透過 Topic 進行節點間的非同步資料交換，實現感知到執行的閉迴路控制。</li>
+                        <li class="mb-4 mytitle-06"><i class="fa-solid fa-microchip text-teal me-2"></i>
+                            <strong>核心中樞：</strong> 使用樹莓派 5 統籌各感測器與運算，並由鋰電池獨立供電。</li>
+                        <li class="mb-4 mytitle-06"><i class="fa-solid fa-eye text-teal me-2"></i>
+                            <strong>感測輸入：</strong> 光達 (RPLIDAR) 與攝像機皆透過 USB 介面回傳環境與影像數據。</li>
+                        <li class="mb-4 mytitle-06"><i class="fa-solid fa-gears text-teal me-2"></i>
+                            <strong>動力控制：</strong> 樹莓派將指令傳遞至 Arduino，再由 GPIO 控制 IBT-2 驅動模組，精準操控直流馬達。</li>
+                        <li class="mb-4 mytitle-06"><i class="fa-solid fa-network-wired text-teal me-2"></i>
+                            <strong>ROS2 通訊：</strong> 透過 Topic 進行節點間的非同步資料交換，實現感知到執行的閉迴路控制。</li>
                     </ul>
                 </div>
-                <!-- 右側：替換為硬體接線圖 -->
                 <div class="col-md-6 text-center wow animate__animated animate__slideInRight">
-                    <img src="images/boat04.jpg" alt="硬體接線架構圖" class="img-fluid rounded shadow-lg border border-2 border-white" loading="lazy">
+                    <img src="images/boat04.jpg" alt="硬體接線架構圖"
+                        class="img-fluid rounded shadow-lg border border-2 border-white" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 10: 未來展望 (一) 多機協作與 SLAM -->
+<!-- Section 10: 未來展望 (一) -->
     <section id="s10_future_tech" class="section-padding">
         <div class="container text-center">
             <h2 class="section-title display-5 fw-bold wow animate__animated animate__fadeInUp">未來展望：技術層面提升</h2>
-            <p class="text-muted fs-4 mb-5 wow animate__animated animate__fadeInUp" data-wow-delay="0.1s">借鏡歐洲 SeaClear 計畫，未來將導入進階演算法與協作架構。</p>
+            <p class="text-muted fs-4 mb-5 wow animate__animated animate__fadeInUp" data-wow-delay="0.1s">借鏡歐洲 SeaClear
+                計畫，未來將導入進階演算法與協作架構。</p>
             <div class="row g-4 mt-3">
                 <div class="col-md-6 wow animate__animated animate__zoomIn" data-wow-delay="0.2s">
                     <div class="s05-feature-card bg-white p-5 border shadow-sm">
@@ -374,10 +438,11 @@
         </div>
     </section>
 
-    <!-- Section 11: 未來展望 (二) 硬體與耐候性 -->
+    <!-- Section 11: 未來展望 (二) -->
     <section id="s11_future_hardware" class="section-padding bg-portfolio">
         <div class="container">
-            <h2 class="text-center section-title display-5 fw-bold wow animate__animated animate__fadeInUp">未來展望：硬體升級計畫</h2>
+            <h2 class="text-center section-title display-5 fw-bold wow animate__animated animate__fadeInUp">未來展望：硬體升級計畫
+            </h2>
             <div class="row g-4 mt-4">
                 <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.1s">
                     <div class="s07-portfolio-card p-4 text-center h-100">
@@ -404,7 +469,7 @@
         </div>
     </section>
 
-    <!-- Section 12: 未來展望 (三) 應用場域擴展 -->
+    <!-- Section 12: 未來展望 (三) -->
     <section id="s12_future_apps" class="section-padding bg-light-gray">
         <div class="container text-center">
             <h2 class="section-title display-5 fw-bold wow animate__animated animate__fadeInUp">延伸應用與場域擴展</h2>
@@ -432,43 +497,50 @@
     <!-- Section 13: 常見問題 (FAQ) -->
     <section id="s13_faq" class="section-padding">
         <div class="container">
-            <h2 class="text-center section-title display-5 fw-bold wow animate__animated animate__fadeInUp">常見問題 (FAQ)</h2>
+            <h2 class="text-center section-title display-5 fw-bold wow animate__animated animate__fadeInUp">常見問題 (FAQ)
+            </h2>
             <div class="row justify-content-center mt-5">
                 <div class="col-md-8 wow animate__animated animate__fadeInUp">
                     <div class="accordion shadow-sm" id="faqAccordion">
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button fs-5 fw-bold text-navy" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                <button class="accordion-button fs-5 fw-bold text-navy" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq1">
                                     無人船如何辨識水面垃圾？
                                 </button>
                             </h2>
                             <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body text-muted">
-                                    我們使用 <strong>YOLO 深度學習模型</strong>（透過 Jetson Nano 進行 GPU 加速推論），並針對寶特瓶、塑膠袋等水面常見廢棄物建立自訂資料集進行訓練，即時推論速度約 120ms~140ms，具備高準確率。
+                                    我們使用 <strong>YOLO 深度學習模型</strong>（透過 Jetson Nano 進行 GPU
+                                    加速推論），並針對寶特瓶、塑膠袋等水面常見廢棄物建立自訂資料集進行訓練，即時推論速度約 120ms~140ms，具備高準確率。
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed fs-5 fw-bold text-navy" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                <button class="accordion-button collapsed fs-5 fw-bold text-navy" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq2">
                                     航行過程中如果遇到障礙物怎麼辦？
                                 </button>
                             </h2>
                             <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body text-muted">
-                                    系統搭載 <strong>RPLIDAR 雷射掃描儀</strong> 進行環境檢測與避障，同時結合 GPS 定位與 MPU-6050 姿態感測器，確保船體在接近目標或航行時不會撞擊周邊障礙物。
+                                    系統搭載 <strong>RPLIDAR 雷射掃描儀</strong> 進行環境檢測與避障，同時結合 GPS 定位與 MPU-6050
+                                    姿態感測器，確保船體在接近目標或航行時不會撞擊周邊障礙物。
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed fs-5 fw-bold text-navy" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                <button class="accordion-button collapsed fs-5 fw-bold text-navy" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#faq3">
                                     遠端要如何監控與操作無人船？
                                 </button>
                             </h2>
                             <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body text-muted">
-                                    無人船基於 <strong>ROS2 (Robot Operating System 2)</strong> 分散式架構，可透過 Wi-Fi 通訊將辨識結果與座標傳回地面站。未來計畫建置結合 4G/5G 或 LoRa 的地面控制中心 (Ground Station) 實現更遠距離的操作。
+                                    無人船基於 <strong>ROS2 (Robot Operating System 2)</strong> 分散式架構，可透過 Wi-Fi
+                                    通訊將辨識結果與座標傳回地面站。未來計畫建置結合 4G/5G 或 LoRa 的地面控制中心 (Ground Station) 實現更遠距離的操作。
                                 </div>
                             </div>
                         </div>
@@ -520,18 +592,17 @@
         <div class="container">
             <h4 class="text-teal fw-bold mb-4"><i class="fa-solid fa-ship me-2"></i>Saga USV</h4>
             <p class="text-light opacity-75 mb-4">基於 YOLO 結合 ROS2 的微型無人水面廢棄物打撈船</p>
-            
+
             <div class="d-flex justify-content-center gap-3 mb-4">
-                <!-- GitHub 連結 (作業規定 5) -->
                 <a href="你的GitHub網址填這裡" target="_blank" class="btn btn-outline-light rounded-pill px-4">
                     <i class="fa-brands fa-github me-2"></i> 專案原始碼
                 </a>
-                <!-- 個人履歷/作品集連結 (作業規定 5) -->
-                <a href="https://pauwayhu.github.io/BS/" target="_blank" class="btn btn-teal rounded-pill px-4" style="background-color: var(--brand-teal); color: white; border: none;">
+                <a href="https://pauwayhu.github.io/BS/" target="_blank" class="btn btn-teal rounded-pill px-4"
+                    style="background-color: var(--brand-teal); color: white; border: none;">
                     <i class="fa-solid fa-briefcase me-2"></i> 作者作品集
                 </a>
             </div>
-            
+
             <hr class="border-secondary my-4">
             <p class="text-muted small mb-0">&copy; 2026 銘傳大學人工智慧應用學系 專題小組. SPA 作業展示版權所有。</p>
         </div>
@@ -543,6 +614,19 @@
     <script>
         // 初始化 WOW.js
         new WOW({ animateClass: 'animate__animated' }).init();
+
+        const autoCloseLinks = document.querySelectorAll('.auto-close');
+        const offcanvasMenu = document.getElementById('quickNavMenu');
+        
+        autoCloseLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // 取得 Bootstrap 側邊欄實體並把它隱藏
+                const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasMenu);
+                if (bsOffcanvas) {
+                    bsOffcanvas.hide();
+                }
+            });
+        });
 
         // 初始化 CounterUp2
         const counterUp = window.counterUp.default;
@@ -559,10 +643,11 @@
             });
         };
         const IO = new IntersectionObserver(callback, { threshold: 1 });
-        
+
         // 選取所有 counter 類別並綁定觀察者
         const counters = document.querySelectorAll('.counter');
         counters.forEach(counter => IO.observe(counter));
     </script>
 </body>
+
 </html>
