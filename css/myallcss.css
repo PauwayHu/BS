@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
+/* =========================================
+   [01] 全域變數與基礎設定
+   ========================================= */
+:root {
+    /* 露易莎風格配色盤 - 語意化變數命名 */
+    --brand-primary-orange: #F26522; /* 品牌主色：露易莎橘 */
+    --brand-dark-coffee: #3E2723;    /* 品牌副色：深焙咖啡黑 */
+    
+    --bg-outer-dark: #2B211D;        /* 外層背景：極深木紋色 */
+    --bg-content-latte: #F5EEE9;     /* 內容背景：溫暖的拿鐵米白色 */
+    --bg-footer-caramel: #D7C6BA;    /* 頁尾背景：焦糖淺褐色 */
+    
+    --btn-normal-brown: #6F4E37;     /* 按鈕一般狀態：中焙咖啡棕 */
+    --text-light: #FAFAFA;           /* 淺色文字：近乎純白 */
+    --text-dark-espresso: #4A3326;   /* 深色文字：濃縮咖啡褐 */
+    
+    --shadow-dark: rgba(43, 33, 29, 0.8);      /* 深色陰影 */
+    --shadow-light: rgba(215, 198, 186, 0.8);  /* 淺色/Hover陰影 */
+
+    --brand-navy: #132A44;      /* 深海靛藍 (主色，取代 primary) */
+    --brand-teal: #20B2AA;      /* 科技水鴨綠 (輔助色，取代 info/success) */
+    --brand-orange: #FF7F50;    /* 亮橘色 (強調色，取代 warning/danger) */
+    --brand-dark: #1A1A1A;      /* 深灰黑 (船體顏色) */
+    --brand-light: #F4F7F6;     /* 淺灰白 (背景色) */
+}
+
+body {
+    font-family: "Zen Maru Gothic", sans-serif;
+}
+
+/* =========================================
+   [02] 通用工具類別 (Utility Classes)
+   ========================================= */
+
+/* 字體粗細 */
+.fw-100 { font-weight: 100; }
+.fw-200 { font-weight: 200; }
+.fw-300 { font-weight: 300; }
+.fw-400 { font-weight: 400; }
+.fw-500 { font-weight: 500; }
+.fw-600 { font-weight: 600; }
+.fw-700 { font-weight: 700; }
+.fw-800 { font-weight: 800; }
+.fw-900 { font-weight: 900; } 
+
+/* 自訂標題樣式 */
+.mytitle-01 {
+    font-size: 64px;
+    font-weight: 900;
+    text-align: center;
+    color: #21afa8;
+    letter-spacing: 15px;
+    line-height: 1.4;
+}
+
+.mytitle-02 {
+    font-size: 52px;
+    font-weight: 700;
+    text-align: center;
+    color: #5254d4;
+    letter-spacing: 1.5px;
+    line-height: 1.4;
+}
+
+.mytitle-03 {
+    font-size: 48px;
+    font-weight: 500;
+    text-align: center;
+    color: #F4F7F6;
+    letter-spacing: 1px;
+    line-height: 1.4;
+}
+
+.mytitle-04 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 1px;
+    line-height: 1.4;
+}
+
+/* 將這些加到你的 myallcss.css 中 [02] 通用工具類別 的區域 */
+
+.mytitle-05 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--brand-navy); /* 深海靛藍 */
+    letter-spacing: 2px;
+    line-height: 1.5;
+}
+
+.mytitle-06 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--brand-teal); /* 科技水鴨綠 */
+    letter-spacing: 1.5px;
+    line-height: 1.5;
+}
+
+.mytitle-07 {
+    font-size: 35px;
+    font-weight: 500;
+    color: var(--brand-orange); /* 亮橘色 */
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+.mytitle-08 {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--brand-dark-coffee); 
+    letter-spacing: 8px;
+    line-height: 1.2;
+}
+
+/* 背景圖設定 */
+.bg-01, 
+.bg-img {
+    background-position: center center;
+    background-size: cover;
+}
+
+/* =========================================
+   [03] 動畫與特效 (Animations & Effects)
+   ========================================= */
+
+/* Roller 共通設定 */
+.roller-t, .roller-b, .roller-l, .roller-r {
+    position: relative;
+    overflow: hidden;
+}
+
+/* roller top (從上方滑入) */
+.roller-t .rollerbox-t {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(223, 126, 126, 0.3);
+    transform: translateY(-100%);
+    transition: transform 2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.roller-t:hover .rollerbox-t { transform: translateY(0); }
+
+/* roller bottom (從下方滑入) */
+.roller-b .rollerbox-b {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(223, 126, 126, 0.3);
+    transform: translateY(100%);
+    transition: transform 2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.roller-b:hover .rollerbox-b { transform: translateY(0); }
+
+/* roller left (從左側滑入) */
+.roller-l .rollerbox-l {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(223, 126, 126, 0.3);
+    transform: translateX(-100%);
+    transition: transform 2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.roller-l:hover .rollerbox-l { transform: translateX(0); }
+
+/* roller right (從右側滑入) */
+.roller-r .rollerbox-r {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(223, 126, 126, 0.3);
+    transform: translateX(100%);
+    transition: transform 2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.roller-r:hover .rollerbox-r { transform: translateX(0); }
+
+/* =========================================
+   [04] Section 區塊專屬樣式
+   ========================================= */
+
+/* Section 04: 數字特效區塊 */
+.s04-counter-card {
+    transition: all 0.3s ease;
+}
+.s04-counter-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Section 05: 我的工作信念 */
+.s05-feature-card {
+    transition: all 0.3s ease;
+    border-radius: 16px;
+}
+.s05-feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+.s05-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+/* =========================================
+   [05] Section 07 專屬：科技網點與毛玻璃特效
+   ========================================= */
+
+.bg-portfolio {
+    background-color: #f4f6f9;
+    background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.bg-portfolio::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 75%);
+    z-index: -1;
+}
+
+.s07-portfolio-card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.s07-portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important;
+    border: 1px solid rgba(13, 110, 253, 0.25);
+}
+
+.s07-icon-box {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.bg-navy { background-color: var(--brand-navy) !important; color: white; }
+.bg-teal { background-color: var(--brand-teal) !important; color: white; }
+.bg-dark-boat { background-color: var(--brand-dark) !important; color: white; }
+.bg-light-gray { background-color: var(--brand-light) !important; }
+
+.text-teal { color: var(--brand-teal) !important; }
+.text-orange { color: var(--brand-orange) !important; }
+
+/* =========================================
+   Section 1: 橫幅區域 (Hero Banner)
+========================================= */
+#s01_banner {
+    /* 你可以將 boat01.jpg 作為背景圖 */
+    background: linear-gradient(rgba(19, 42, 68, 0.8), rgba(26, 26, 26, 0.9)), url('../images/boat01.jpg') center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* =========================================
+   通用 Section 設定
+========================================= */
+.section-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.section-title {
+    font-weight: 900;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--brand-teal);
+}
+
+/* 確保 CounterUp 隱藏狀態 */
+.counter-box {
+    border-radius: 15px;
+    border-top: 5px solid var(--brand-teal);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   統一卡片圖片大小與比例 (避免長寬不一)
+========================================= */
+.card-img-fixed {
+    height: 250px;       /* 你可以依據喜好調整高度，例如 200px 或 300px */
+    object-fit: cover;   /* 讓圖片保持比例填滿這個框，不會被壓扁變形 */
+    object-position: center; /* 聚焦在圖片正中央 */
+}
+/* =========================================
+   Section 5: 時間軸 (Timeline)
+========================================= */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* 繪製中間的垂直主線 */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--brand-teal);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+
+/* 時間軸區塊通用設定 */
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+}
+
+.timeline-item.left {
+    left: 0;
+}
+
+.timeline-item.right {
+    left: 50%;
+}
+
+/* 時間軸上的發光圓點 */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--brand-orange);
+    border: 4px solid #fff;
+    border-radius: 50%;
+    top: 30px;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(255, 127, 80, 0.8); /* 橘色光暈效果 */
+}
+
+/* 修正圓點在左右兩側的位置 */
+.timeline-item.left::after {
+    right: -10px;
+}
+.timeline-item.right::after {
+    left: -10px;
+}
+
+/* 手機版 RWD：將垂直線與區塊全部靠左 */
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 31px;
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 15px;
+    }
+    .timeline-item.left, .timeline-item.right {
+        left: 0;
+    }
+    .timeline-item.left::after, .timeline-item.right::after {
+        left: 21px;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
