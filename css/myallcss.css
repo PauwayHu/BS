@@ -385,3 +385,28 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+/* =========================================
+   [新增] 實機展示區塊 (Gallery) 圖片固定大小特效
+   ========================================= */
+.gallery-img {
+    width: 100%;
+    height: 300px; /* 固定高度，解決圖片大小不一的問題 */
+    object-fit: cover; /* 保持比例填滿，超出的部分自動完美裁切 */
+    object-position: center; /* 焦點對齊圖片正中央 */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05); /* 滑鼠懸停時微放大 */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
+    z-index: 10;
+}
+
+/* 將外層設為 hidden 確保圖片放大時不會超出圓角範圍 */
+.gallery-wrapper {
+    overflow: hidden;
+    border-radius: 12px;
+}
