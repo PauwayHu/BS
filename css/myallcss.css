@@ -124,69 +124,52 @@ body {
 }
 
 /* =========================================
-   [03] 動畫與特效 (Animations & Effects)
+   [03] 動畫與特效 (Animations & Effects) 升級版
    ========================================= */
 
-/* Roller 共通設定 */
+/* Roller 共通設定：確保遮罩不會超出卡片範圍，並繼承圓角 */
 .roller-t, .roller-b, .roller-l, .roller-r {
     position: relative;
     overflow: hidden;
+    border-radius: inherit; 
 }
 
-/* roller top (從上方滑入) */
-.roller-t .rollerbox-t {
+/* 共用遮罩樣式：加上毛玻璃與深色背景 */
+.rollerbox-t, .rollerbox-b, .rollerbox-l, .rollerbox-r {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(223, 126, 126, 0.3);
-    transform: translateY(-100%);
-    transition: transform 2s;
+    background-color: rgba(62, 39, 35, 0.85); /* 露易莎深焙咖啡色微透 */
+    backdrop-filter: blur(6px); /* 毛玻璃模糊效果 */
+    -webkit-backdrop-filter: blur(6px);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease; /* 0.4秒流暢動畫 */
+    z-index: 10;
+    opacity: 0; /* 預設稍微隱藏，讓滑動時更有層次 */
 }
+
+/* Hover 時透明度恢復 */
+.roller-t:hover .rollerbox-t,
+.roller-b:hover .rollerbox-b,
+.roller-l:hover .rollerbox-l,
+.roller-r:hover .rollerbox-r {
+    opacity: 1;
+}
+
+/* 各方向的初始位置與滑入效果 */
+.rollerbox-t { transform: translateY(-100%); top: 0; left: 0; }
 .roller-t:hover .rollerbox-t { transform: translateY(0); }
 
-/* roller bottom (從下方滑入) */
-.roller-b .rollerbox-b {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(223, 126, 126, 0.3);
-    transform: translateY(100%);
-    transition: transform 2s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.rollerbox-b { transform: translateY(100%); bottom: 0; left: 0; }
 .roller-b:hover .rollerbox-b { transform: translateY(0); }
 
-/* roller left (從左側滑入) */
-.roller-l .rollerbox-l {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(223, 126, 126, 0.3);
-    transform: translateX(-100%);
-    transition: transform 2s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.rollerbox-l { transform: translateX(-100%); top: 0; left: 0; }
 .roller-l:hover .rollerbox-l { transform: translateX(0); }
 
-/* roller right (從右側滑入) */
-.roller-r .rollerbox-r {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(223, 126, 126, 0.3);
-    transform: translateX(100%);
-    transition: transform 2s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.rollerbox-r { transform: translateX(100%); top: 0; right: 0; }
 .roller-r:hover .rollerbox-r { transform: translateX(0); }
 
 /* =========================================
