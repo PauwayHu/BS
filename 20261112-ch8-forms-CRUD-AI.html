@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP 產品管理系統 - 產品建檔</title>
+    <!-- Bootstrap CSS (保留您的本地路徑) -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- 加入 Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- 加入 Google Fonts (Noto Sans TC) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           ERP 系統自訂 CSS 樣式
+           ========================================= */
+        body {
+            background-color: #f4f7f6; /* 現代後台常用的淺灰底色 */
+            font-family: 'Noto Sans TC', sans-serif;
+            color: #333;
+        }
+
+        /* 導覽列風格 */
+        .erp-navbar {
+            background-color: #1a2942; /* 企業海軍藍 */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* 麵包屑導覽 */
+        .erp-breadcrumb {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .erp-breadcrumb a {
+            color: #6c757d;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .erp-breadcrumb a:hover {
+            color: #0d6efd;
+        }
+
+        /* 卡片統一樣式 */
+        .erp-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .erp-card-header {
+            background-color: #fff;
+            border-bottom: 1px solid #edf2f9;
+            padding: 1.25rem 1.5rem;
+            border-radius: 10px 10px 0 0 !important;
+            display: flex;
+            align-items: center;
+        }
+        .erp-card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a2942;
+            margin: 0;
+        }
+
+        /* 表單元素美化 */
+        .form-label {
+            font-weight: 500;
+            color: #495057;
+            font-size: 0.95rem;
+        }
+        .form-control, .form-select {
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+            transition: all 0.3s;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+        }
+        
+        /* 範圍滑桿美化 */
+        .range-wrap {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #edf2f9;
+        }
+
+        /* 按鈕統一風格 */
+        .btn-erp {
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .btn-erp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .btn-erp-primary {
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+        }
+        .btn-erp-primary:hover {
+            background-color: #0b5ed7;
+            color: white;
+        }
+
+        /* 資料確認區塊特效 */
+        .summary-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid #0dcaf0;
+        }
+        .summary-row {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #dee2e6;
+        }
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+        
+        /* 簡單的浮現動畫 */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeInUp 0.4s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 頂部導覽列 -->
+    <nav class="navbar navbar-expand-lg navbar-dark erp-navbar">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#"><i class="bi bi-box-seam me-2"></i>ERP 產品管理系統</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="bi bi-house-door me-1"></i>儀表板</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="bi bi-file-earmark-plus me-1"></i>產品建檔</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-list-ul me-1"></i>產品列表</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center text-white">
+                    <i class="bi bi-person-circle fs-5 me-2"></i>
+                    <span class="fs-6">管理員</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要內容區 -->
+    <div class="container-fluid max-w-1200 py-4 px-4">
+        
+        <!-- 麵包屑 -->
+        <div class="erp-breadcrumb">
+            <a href="#">首頁</a> <i class="bi bi-chevron-right mx-1 text-muted" style="font-size: 0.75rem;"></i> 
+            <a href="20261110-ch8-forms-CRUD-R.html">產品管理</a> <i class="bi bi-chevron-right mx-1 text-muted" style="font-size: 0.75rem;"></i> 
+            <span class="text-dark fw-500">產品建檔</span>
+        </div>
+
+        <div class="row">
+            <!-- 產品建檔表單 -->
+            <div class="col-lg-7 mb-4">
+                <div class="card erp-card h-100">
+                    <div class="card-header erp-card-header">
+                        <div class="erp-card-title"><i class="bi bi-pencil-square text-primary me-2"></i>新增產品資料</div>
+                    </div>
+                    <div class="card-body p-4">
+                        
+                        <div class="row">
+                            <!-- 1. 產品名稱 -->
+                            <div class="col-md-6 mb-4">
+                                <label for="pname" class="form-label">產品名稱 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" placeholder="請輸入2-6字數名稱" id="pname">
+                                <div class="valid-feedback"><i class="bi bi-check-circle me-1"></i>格式正確</div>
+                                <div class="invalid-feedback"><i class="bi bi-x-circle me-1"></i>請輸入2-6個字元</div>
+                            </div>
+
+                            <!-- 4. 產品分類 (調整順序與排版) -->
+                            <div class="col-md-6 mb-4">
+                                <label for="category" class="form-label">產品分類 <span class="text-danger">*</span></label>
+                                <select id="category" class="form-select">
+                                    <option value="" disabled selected>請選擇分類...</option>
+                                    <option value="零食">零食</option>
+                                    <option value="乳製品">乳製品</option>
+                                    <option value="飲料">飲料</option>
+                                </select>
+                                <div class="valid-feedback"><i class="bi bi-check-circle me-1"></i>已選擇</div>
+                            </div>
+                        </div>
+
+                        <!-- 2. 價格欄位 -->
+                        <div class="mb-4">
+                            <label for="price" class="form-label">標準定價 (USD) <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-currency-dollar"></i></span>
+                                <input type="number" class="form-control" id="price" value="50" min="1" max="100">
+                            </div>
+                            <!-- Bootstrap 對 Input group 的 feedback 需要特別結構，此處我們依靠 JS 動態控制 -->
+                            <div class="valid-feedback" style="display: none;" id="price-valid"><i class="bi bi-check-circle me-1"></i>價格合理</div>
+                            <div class="invalid-feedback" style="display: none;" id="price-invalid"><i class="bi bi-x-circle me-1"></i>價格必須在 1-100 之間</div>
+                        </div>
+
+                        <!-- 3. 數量欄位 -->
+                        <div class="mb-4">
+                            <label for="num" class="form-label d-flex justify-content-between">
+                                <span>入庫數量 <span class="text-danger">*</span></span>
+                                <span>當前設定: <span class="text-primary fw-bold fs-5" id="num_text">50</span> 單位</span>
+                            </label>
+                            <div class="range-wrap">
+                                <input type="range" class="form-range" min="1" max="100" step="1" value="50" id="num">
+                            </div>
+                        </div>
+
+                        <!-- 5. 備註 -->
+                        <div class="mb-4">
+                            <label for="remark" class="form-label">內部備註說明</label>
+                            <textarea id="remark" class="form-control" rows="3" placeholder="請輸入產品注意事項 (2-10字)"></textarea>
+                            <div class="valid-feedback"><i class="bi bi-check-circle me-1"></i>已記錄</div>
+                            <div class="invalid-feedback"><i class="bi bi-x-circle me-1"></i>字數需在2-10字之間</div>
+                        </div>
+                    </div>
+
+                    <!-- 6. 按鈕區 -->
+                    <div class="card-footer bg-white border-top-0 p-4 pt-0 text-end">
+                        <button class="btn btn-light border me-2 btn-erp text-muted">清除重填</button>
+                        <button class="btn btn-erp-primary btn-erp px-4" id="ok-btn"><i class="bi bi-shield-check me-2"></i>驗證並確認</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 產品建檔資料確認區塊 (右側) -->
+            <div class="col-lg-5 mb-4 d-none" id="showmsg">
+                <!-- 內部結構將由 js 動態寫入 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JS 腳本 -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let flag_pname = false;
+        let flag_price = true; // 預設值 50 是合法的
+        let flag_category = false;
+        let flag_remark = false;
+
+        $(function () {
+            // 產品名稱驗證
+            $("#pname").on("change", function () {
+                if ($(this).val().length > 1 && $(this).val().length < 7) {
+                    $(this).removeClass("is-invalid").addClass("is-valid");
+                    flag_pname = true;
+                } else {
+                    $(this).removeClass("is-valid").addClass("is-invalid");
+                    flag_pname = false;
+                }
+            });
+
+            // 價格驗證 (針對 Input Group 微調 Feedback 顯示)
+            $("#price").on("change", function () {
+                if ($(this).val() >= 1 && $(this).val() <= 100) {
+                    $(this).removeClass("is-invalid").addClass("is-valid");
+                    $("#price-valid").show();
+                    $("#price-invalid").hide();
+                    flag_price = true;
+                } else {
+                    $(this).removeClass("is-valid").addClass("is-invalid");
+                    $("#price-valid").hide();
+                    $("#price-invalid").show();
+                    flag_price = false;
+                }
+            });
+
+            // 數量
+            $("#num").on("input", function () { 
+                $("#num_text").text($(this).val());
+            });
+
+            // 產品分類
+            $("#category").on("change", function () {
+                $(this).addClass("is-valid");
+                flag_category = true;
+            });
+
+            // 產品備註
+            $("#remark").on("change", function () {
+                if ($(this).val().length > 1 && $(this).val().length < 11) {
+                    $(this).removeClass("is-invalid").addClass("is-valid");
+                    flag_remark = true;
+                } else {
+                    $(this).removeClass("is-valid").addClass("is-invalid");
+                    flag_remark = false;
+                }
+            });
+
+            // 【第一階段】按鈕監聽 #ok-btn
+            $("#ok-btn").on("click", function () {
+                if (flag_pname && flag_price && flag_category && flag_remark) {
+                    
+                    $("#showmsg").removeClass("d-none");
+
+                    const pname = $("#pname").val();
+                    const price = $("#price").val();
+                    const num = $("#num").val();
+                    const category = $("#category").val();
+                    const remark = $("#remark").val();
+
+                    // ==========================================
+                    // ERP 風格升級：將單調的文字轉化為高質感的摘要卡片
+                    // ==========================================
+                    let strHTML = `
+                    <div class="card erp-card animate-fade-in h-100" style="border-top: 4px solid #0dcaf0;">
+                        <div class="card-header erp-card-header">
+                            <div class="erp-card-title"><i class="bi bi-file-earmark-text text-info me-2"></i>系統資料確認</div>
+                        </div>
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            
+                            <div>
+                                <p class="text-muted mb-4"><i class="bi bi-info-circle me-1"></i>請確認以下產品參數是否正確，確認無誤後即可送出入庫。</p>
+                                
+                                <div class="summary-box mb-4">
+                                    <div class="row summary-row">
+                                        <div class="col-5 text-muted">產品名稱</div>
+                                        <div class="col-7 fw-bold text-dark">${pname}</div>
+                                    </div>
+                                    <div class="row summary-row">
+                                        <div class="col-5 text-muted">產品分類</div>
+                                        <div class="col-7 fw-bold text-dark">${category}</div>
+                                    </div>
+                                    <div class="row summary-row">
+                                        <div class="col-5 text-muted">標準定價</div>
+                                        <div class="col-7 fw-bold text-primary fs-5">$${price}</div>
+                                    </div>
+                                    <div class="row summary-row">
+                                        <div class="col-5 text-muted">入庫數量</div>
+                                        <div class="col-7 fw-bold text-dark">${num} 單位</div>
+                                    </div>
+                                    <div class="row summary-row">
+                                        <div class="col-5 text-muted">內部備註</div>
+                                        <div class="col-7 fw-bold text-dark">${remark}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end mt-4">
+                                <!-- 加入了 id="cancel-btn" 以便觸發取消事件 -->
+                                <button class="btn btn-light border btn-erp me-2" id="cancel-btn">返回修改</button>
+                                <button class="btn btn-info text-white btn-erp px-4 shadow-sm" id="send-btn">
+                                    <i class="bi bi-cloud-arrow-up me-2"></i>確認送出
+                                </button>
+                            </div>
+                        </div>
+                    </div>`;
+
+                    $("#showmsg").html(strHTML);
+                } else {
+                    Swal.fire({
+                        title: "表單驗證未通過",
+                        text: "請檢查是否有漏填或格式錯誤的欄位",
+                        icon: "warning",
+                        confirmButtonColor: '#1a2942'
+                    });
+                }
+            });
+
+            // 【新增邏輯】處理「返回修改」按鈕 (取消)
+            $("#showmsg").on("click", "#cancel-btn", function () {
+                $("#showmsg").addClass("d-none"); // 將確認畫面重新隱藏
+            });
+
+            // 【第二階段】確認送出 #send-btn
+            $("#showmsg").on("click", "#send-btn", function () {
+                //蒐集欄位資料
+                const pname = $("#pname").val();
+                const price = $("#price").val();
+                const num = $("#num").val();
+                const category = $("#category").val();
+                const remark = $("#remark").val();
+
+                //轉成JSON物件
+                const dataJSON = {
+                    "name": pname,
+                    "category": category,
+                    "price": price,
+                    "num": num,
+                    "remark": remark
+                };
+
+                //傳送資料至後端API,執行新增動作
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:3000/product",
+                    dataType: "json",
+                    data: JSON.stringify(dataJSON),
+                    contentType: "application/json",
+                    success: function (data) {
+                        
+                        Swal.fire({
+                            title: "入庫成功",
+                            text: `產品 [${pname}] 已成功建立！`,
+                            icon: "success",
+                            confirmButtonColor: '#0d6efd'
+                        });
+                        
+                        //showmsg關閉
+                        $("#showmsg").addClass("d-none");
+
+                        //清除重設欄位與驗證樣式
+                        $("#pname").val("");
+                        $("#price").val(50);
+                        $("#num").val(50);
+                        $("#num_text").text(50);
+                        $("#category").val("");
+                        $("#remark").val("");
+
+                        //重設驗證樣式與特別提示
+                        $("#pname, #price, #category, #remark").removeClass("is-valid is-invalid");
+                        $("#price-valid, #price-invalid").hide();
+
+                        //重設旗標
+                        flag_pname = false;
+                        flag_price = true;
+                        flag_category = false;
+                        flag_remark = false;
+                    },
+                    error: function () {
+                        Swal.fire({
+                            title: "伺服器連線失敗",
+                            text: "無法連接 API，請確認 JSON Server 是否已啟動",
+                            icon: "error",
+                            confirmButtonColor: '#1a2942'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

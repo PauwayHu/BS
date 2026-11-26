@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Data 資料轉換</title>
+</head>
+<body>
+    <script src="js/jquery.js"></script>
+    <script src="js/sweetalert2@11.js"></script>
+    
+    <script>
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "js/HotelList.json",
+                dataType: "json",
+                success: showdata,
+                error: function () {
+                    Swal.fire({
+                        title: "連線錯誤",
+                        text: "旅館資料API讀取錯誤，請聯絡管理員",
+                        icon: "error"
+                    });
+                }
+            });
+
+            function showdata(data) {
+                console.log("原始資料: ", data.Hotels);
+                
+                // 1. 資料轉換map(), 取出所需要的欄位
+                // 2. 資料清洗 null, undefined, 多於空白
+                const cleanHotelData = normalize(data.Hotels);
+                console.log("清洗後的資料: ", cleanHotelData);
+                
+                // 3. 過濾 
+                // 【原本的要求】：臺中市房價低於3800元的旅館
+                const filterHotelData1 = cleanHotelData.filter(function (item) {
+                    const isTaichung = item.city === "臺中市" || item.city === "台中市";
+                    return isTaichung && item.lowestPrice < 3800;
+                });
+                console.log("【過濾1】臺中市房價低於3800元的旅館: ", filterHotelData1);
+
+                // 【延伸的要求】：找出房價介於 2000~4000元的旅宿，並排除沒有電話、沒有房價的旅宿
+                const filterHotelData2 = cleanHotelData.filter(function (item) {
+                    const isPriceInRange = item.lowestPrice >= 2000 && item.lowestPrice <= 4000;
+                    const hasPhone = item.tel !== "未提供" && item.tel !== "";
+                    const hasPrice = item.lowestPrice > 0; // 大於0代表有房價資料
+                    
+                    return isPriceInRange && hasPhone && hasPrice;
+                });
+                console.log("【過濾2】房價2000~4000且有電話與房價的旅宿: ", filterHotelData2);
+
+                // --- 4. 分頁：每頁20筆，可以指定頁碼 ---
+                const PAGE_SIZE = 20;
+                let page = 1;
+                
+                // 這裡以【過濾2】的資料(filterHotelData2)來做分頁示範，你也可以隨時改成 filterHotelData1
+                const pageData = pagination(filterHotelData2, PAGE_SIZE, page);
+                console.log(`第 ${page} 頁的資料 (每頁 ${PAGE_SIZE} 筆): `, pageData);
+            }
+        });
+
+        // 資料清洗的自訂函式(副程式)
+        function normalize(data) {
+            return data.map(function (item, index) { 
+                return {
+                    id: index + 1,                    
+                    name: (item.HotelName ?? "未提供").trim(),
+                    city: (item.PostalAddress?.City ?? "未提供").trim(),
+                    tel: (item.Telephones?.[0]?.Tel ?? "未提供").trim(),
+                    lowestPrice: (item.LowestPrice ?? 0),
+                    description: (item.Description ?? "未提供").trim()
+                }
+            });
+        }
+
+        // 分頁的自訂函式(副程式)
+        function pagination(data, pageSize, page) {   
+            const start = (page - 1) * pageSize;      
+            const end = start + pageSize;             
+            return data.slice(start, end);            
+        }
+    </script>
+</body>
+</html>
